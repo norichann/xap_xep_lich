@@ -1,5 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { AppStore } from "@/stores";
+
+const APP_STORE = AppStore();
+
+const listTrip = computed(() => APP_STORE.onGetterListTrip.value);
 
 const times = [];
 for (let i = 0; i <= 24; i++) {
@@ -21,6 +26,11 @@ const schedule = ref([
     time: "300px",
   },
 ]);
+
+onMounted(async () => {
+  await APP_STORE.onActionGetListTrip();
+  console.log(listTrip.value);
+});
 </script>
 
 <template>
@@ -37,19 +47,19 @@ const schedule = ref([
         </div>
       </div>
       <br />
-      <div class="flex flex-column gap-2">
-        <div v-for="(item, index) in schedule" :key="index" class="flex">
+      <div style="width: 1500px" class="flex flex-column gap-2">
+        <div v-for="(item, index) in listTrip" :key="index" class="flex">
           <div
-            :style="{ width: `${item?.timeStart}` }"
+            :style="{ width: `${item?.coordinates?.widthStart}` }"
             class="h-5rem bg-black-alpha-20 opacity-0"
           >
-            Start
+            {{ item?.coordinates?.widthStart }}
           </div>
           <div
-            :style="{ width: `${item?.time}` }"
+            :style="{ width: `${item?.coordinates?.widthActive}` }"
             class="h-5rem bg-white border-left-1"
           >
-            Time
+            {{ item?.coordinates?.widthActive }}
           </div>
         </div>
       </div>
