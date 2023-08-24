@@ -12,6 +12,11 @@
     -ms-tap-highlight-color: transparent;
 }
 
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
 .text-custom-mini {
     font-size: .8rem;
 }

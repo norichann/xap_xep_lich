@@ -1,5 +1,10 @@
-<script setup></script>
+<script setup>
+import TimesTable from "./components/TimesTable.vue";
+</script>
 
 <template>
-  <div>hello</div>
+  <div class="container">
+    <br /><br />
+    <TimesTable />
+  </div>
 </template>
