@@ -4,7 +4,7 @@ import { API_APP } from "@/api";
 
 export const AppStore = defineStore("AppStore", () => {
   // State
-  const listTrip = ref();
+  const listTrip = ref([]);
 
   // Getter
   const onGetterListTrip = computed(() => listTrip);
